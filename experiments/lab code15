@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char plaintext[100];
+    int key[100];
+    int len;
+
+    printf("Enter Plaintext (uppercase): ");
+    scanf("%s", plaintext);
+
+    len = strlen(plaintext);
+
+    printf("Enter %d key values (0-25):\n", len);
+
+    for (int i = 0; i < len; i++) {
+        scanf("%d", &key[i]);
+    }
+
+    printf("Ciphertext: ");
+
+    for (int i = 0; i < len; i++) {
+        int p = toupper(plaintext[i]) - 'A';
+        int c = (p + key[i]) % 26;
+
+        printf("%c", c + 'A');
+    }
+
+    printf("\n");
+
+    return 0;
+}
